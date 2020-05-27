@@ -17,35 +17,38 @@ CURRENT_DIR = os.path.dirname(__file__)
 model_file = os.path.join(CURRENT_DIR, 'model.file')
 model = load(model_file)
 
-
-data_file = os.path.join(CURRENT_DIR,"spam.csv")
-df = pd.read_csv(data_file, encoding='ISO-8859-1')
-df = df.drop(["Unnamed: 2", "Unnamed: 3", "Unnamed: 4"], axis=1)
-df.columns = ['labels', 'data']
-
-df['b_labels'] = df['labels'].map({'ham': 0, 'spam': 1})
-Y = df['b_labels'].values
+tfidf_file = os.path.join(CURRENT_DIR, 'tfidf.pk1')
+tfidf = load(tfidf_file)
 
 
-df_train, df_test, Ytrain, Ytest = train_test_split(df['data'], Y, test_size=0.33)
+# data_file = os.path.join(CURRENT_DIR,"spam.csv")
+# df = pd.read_csv(data_file, encoding='ISO-8859-1')
+# df = df.drop(["Unnamed: 2", "Unnamed: 3", "Unnamed: 4"], axis=1)
+# df.columns = ['labels', 'data']
 
-tfidf = TfidfVectorizer(decode_error='ignore')
+# df['b_labels'] = df['labels'].map({'ham': 0, 'spam': 1})
+# Y = df['b_labels'].values
 
-Xtrain = tfidf.fit_transform(df_train)
-Xtest = tfidf.transform(df_test)
 
-model = MultinomialNB()
-model.fit(Xtrain, Ytrain)
-print("train score:", model.score(Xtrain, Ytrain))
-print("test score:", model.score(Xtest, Ytest))
+# df_train, df_test, Ytrain, Ytest = train_test_split(df['data'], Y, test_size=0.33)
+
+# tfidf = TfidfVectorizer(decode_error='ignore')
+
+# Xtrain = tfidf.fit_transform(df_train)
+# Xtest = tfidf.transform(df_test)
+
+# model = MultinomialNB()
+# model.fit(Xtrain, Ytrain)
+# print("train score:", model.score(Xtrain, Ytrain))
+# print("test score:", model.score(Xtest, Ytest))
 
 # dump(model,os.path.join(CURRENT_DIR, 'model.file'))
 
 
 # Create your views here.
 def api_sms_spam_pred(request):
-    print("train score:", model.score(Xtrain, Ytrain))
-    print("test score:", model.score(Xtest, Ytest))
+    # print("train score:", model.score(Xtrain, Ytrain))
+    # print("test score:", model.score(Xtest, Ytest))
     text_to_test = request.GET['review']
     print("----------------------------------------------------------------")
     print(text_to_test)
