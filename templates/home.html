@@ -11,10 +11,9 @@ Created on Mon Jun  1 10:04:46 2020
 <head>
 <style>
     #form-message{
-        width: 500px;
-        border: 100px;
-        /background: #f7f7f7;/
-        margin: 200px 200px;
+       width: 800px;
+        /background-color: #051436;/
+        margin: 160px 160px;
         
         }
         
@@ -28,45 +27,40 @@ Created on Mon Jun  1 10:04:46 2020
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        background-color: #00CED1;
+        background-color: #09184A;
         }
-    
-    body{
-        background-image: linear-gradient(to right, #0056d6, #0091e3, #00bac8, #9dd9be, #f1f6e5) 
-        }
+
+        
         
     .input{
         width: 60%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-        
+        font-size: 16px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      text-size : 100%;  
         }
         
-    .predict{
-        font-size: 20px;
-        color: red;
-        }
    
 </style>
 </head>
-<body>
-<div>
+<body background = "https://i2.wp.com/pixelatedaudio.com/wp-content/uploads/2015/12/new-PA-background-web.jpg?w=1929&ssl=1">
+<div ">
 <header>
-<h1><center>SMS SPAM DETECTOR </center></h1>
+<h1><center >SMS SPAM DETECTOR </center></h1>
 <hr color = "black">
 </header>
 </div>
 <center><form id = "form-message" action = "/login" method = "post">
-    <label for = "message"/> <strong>Spam or ham? Lets find out!</strong> </label>
-    <br>
-    <input class = "input" type = "input" name = "message" placeholder = "Enter message here"><br>
+    <p><br><br><br><br><br><br><br>
+    <div style = "font-size: 25px;"> This Magic Brain will detect if the SMS is a spam or not. </div><br>
+    
+    <input class = "input" type = "input" name = "message" placeholder = "Enter message here">
     <button class = "button" type = "submit" value = "Submit">Submit</button>
     <br>
-    <p class = "predict"><br><br><h3>{{Out}}</h3></br></br></p>
+    <div style = "font-size: 25px; color : #98080F;"
+    <p class = "predict" ><br><br><br><b>{{Out}}</b></br></br></p></div>
 </form>
-
-
 
 </body>
 </html>
